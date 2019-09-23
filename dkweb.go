@@ -16,8 +16,8 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, nil)
 }
 
-func handleBooks(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("books.html"))
+func handleAbout(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles("about.html"))
 	tmpl.Execute(w, nil)
 }
 
@@ -26,7 +26,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	http.HandleFunc("/", handleIndex)
-	http.HandleFunc("/books", handleBooks)
+	http.HandleFunc("/about", handleAbout)
 
 	fmt.Println("Listening on " + HOST + PORT)
 	http.ListenAndServe(":3000", nil)
